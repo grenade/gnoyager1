@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState(undefined);
+  useEffect(() => {
+    //setInterval(() => {
+      fetch(`https://gnoyager1.v8r.io/graphql/query`, {
+        method: 'POST',
+        body: JSON.stringify({
+          query: 'query{transactions(filter:{}){block_height,hash,messages{route,typeUrl}}}'
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => response.json())
+      .then(({ data: { transactions } }) => {
+        const height = transactions.slice(-1)[0].block_height;
+        setData((data) => ({
+          ...data,
+          height,
+          transactions: transactions.map(({
+            block_height: block,
+            hash,
+            messages: [ { route, typeUrl: method } ],
+          }) => ({
+            block,
+            hash,
+            route,
+            method,
+          })).reverse(),
+        }));
+      })
+      .catch(console.error);
+    //}, 3000);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      {
+        (!!data)
+          ? (
+              <pre>
+                {JSON.stringify(data, null, 2)}
+              </pre>
+            )
+          : null
+      }
+    </Container>
   );
 }
 
