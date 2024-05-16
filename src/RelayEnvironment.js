@@ -7,8 +7,8 @@ import {
 } from "relay-runtime";
 import { createClient } from "graphql-ws";
 
-const HTTP_ENDPOINT = "http://localhost:5000/graphql";
-const WEBSOCKET_ENDPOINT = "ws://localhost:5000/graphql";
+const HTTP_ENDPOINT = "https://gnoyager1.v8r.io/graphql/query";
+const WEBSOCKET_ENDPOINT = "ws://gnoyager1.v8r.io/graphql/query";
 
 const fetchFn = async (request, variables) => {
   const resp = await fetch(HTTP_ENDPOINT, {

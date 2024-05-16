@@ -24,7 +24,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npx browserslist@latest --update-db && react-scripts build",
     "deploy": "gh-pages -d build --branch gh-pages",
-    "relay": "relay-compiler"
+    "relay": "relay-compiler",
+    "graphql:codegen": "graphql codegen"
   },
   "homepage": "https://rob.tn/gnoyager1",
   "eslintConfig": {
@@ -48,6 +49,8 @@
   "devDependencies": {
     "babel-plugin-relay": "16.2.0",
     "gh-pages": "^6.1.1",
-    "relay-compiler": "16.2.0"
+    "relay-compiler": "16.2.0",
+    "graphql-cli": "4.1.0",
+    "@graphql-cli/codegen": "3.0.4"
   }
 }

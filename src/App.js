@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
+//import graphql from "babel-plugin-relay/macro";
 
 const App = () => {
   const [data, setData] = useState(undefined);

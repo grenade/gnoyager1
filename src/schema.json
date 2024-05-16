@@ -1,0 +1,2752 @@
+{
+  "__schema": {
+    "queryType": {
+      "name": "Query"
+    },
+    "mutationType": null,
+    "subscriptionType": {
+      "name": "Subscription"
+    },
+    "types": [
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "AmountInput",
+        "description": "`AmountInput` is a range of token quantities to filter by.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "from",
+            "description": "The minimum quantity of tokens to check for.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to",
+            "description": "The maximum quantity of tokens to check for.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "denomination",
+            "description": "Filter by token's denomination.\nIf set to an empty string, it will get an empty value.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BankMsgSend",
+        "description": "`BankMsgSend` is a message with a message router of `bank` and a message type of `send`.\n`BankMsgSend` is the fund transfer tx message.",
+        "fields": [
+          {
+            "name": "from_address",
+            "description": "the bech32 address of the fund sender.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "to_address",
+            "description": "the bech32 address of the fund receiver.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "amount",
+            "description": "the denomination and amount of fund sent (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BankMsgSendInput",
+        "description": "`BankMsgSendInput` represents input parameters required when the message type is `send`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "from_address",
+            "description": "the bech32 address of the fund sender.\nYou can filter by the fund sender address.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_address",
+            "description": "the bech32 address of the fund receiver.\nYou can filter by the fund receiver address.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "amount",
+            "description": "the denomination and amount of fund sent (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AmountInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Block",
+        "description": "Represents a blockchain block with various attributes detailing its creation and content.",
+        "fields": [
+          {
+            "name": "height",
+            "description": "A unique identifier for the Block determined by its position in the blockchain.\nThis integer is strictly increasing with each new Block.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "version",
+            "description": "The software version of the node that created this Block, indicating the specific\nimplementation and versioning of the blockchain protocol used.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "chain_id",
+            "description": "An identifier for the specific blockchain network this Block belongs to. Helps in\ndistinguishing between different networks like mainnet, testnet, etc.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "time",
+            "description": "The timestamp at which this Block was proposed and finalized in the blockchain. Represented in UTC.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Time",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "proposer_address_raw",
+            "description": "Encoded data representing the blockchain address of the proposer who submitted this Block.\nIt is raw and requires decoding to be human-readable.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "BlockFilter",
+        "description": "Filters for querying Blocks within specified criteria related to their attributes.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "from_height",
+            "description": "Minimum block height from which to start fetching Blocks, inclusive. If unspecified, there is no lower bound.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_height",
+            "description": "Maximum block height up to which Blocks should be fetched, exclusive. If unspecified, there is no upper bound.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "from_time",
+            "description": "Minimum timestamp from which to start fetching Blocks, inclusive. Blocks created at or after this time will be included.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Time",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_time",
+            "description": "Maximum timestamp up to which to fetch Blocks, exclusive. Only Blocks created before this time are included.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Time",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Float",
+        "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "ID",
+        "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as \"4\") or integer (such as 4) input value will be accepted as an ID.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int",
+        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MemFile",
+        "description": "`MemFile` is the metadata information tied to a single gno package / realm file",
+        "fields": [
+          {
+            "name": "name",
+            "description": "the name of the source file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "body",
+            "description": "the content of the source file.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MemFileInput",
+        "description": "`MemFileInput` is the metadata information tied to a single gno package / realm file.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "name",
+            "description": "the name of the source file.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "body",
+            "description": "the content of the source file.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MemPackage",
+        "description": "`MemPackage` is the metadata information tied to package / realm deployment.",
+        "fields": [
+          {
+            "name": "name",
+            "description": "the name of the package.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "path",
+            "description": "the gno path of the package.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "files",
+            "description": "the associated package gno source.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "MemFile",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MemPackageInput",
+        "description": "`MemPackageInput` represents a package stored in memory.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "name",
+            "description": "the name of the package.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "path",
+            "description": "the gno path of the package.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "files",
+            "description": "the associated package gno source.",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "MemFileInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "ENUM",
+        "name": "MessageRoute",
+        "description": "`MessageRoute` is route type of the transactional message.\n`MessageRoute` has the values of vm and bank.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [
+          {
+            "name": "vm",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bank",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": []
+      },
+      {
+        "kind": "ENUM",
+        "name": "MessageType",
+        "description": "`MessageType` is message type of the transaction.\n`MessageType` has the values `send`, `exec`, `add_package`, and `run`.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [
+          {
+            "name": "send",
+            "description": "The route value for this message type is `bank`, and the value for transactional messages is `BankMsgSend`.\nThis is a transaction message used when sending native tokens.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "exec",
+            "description": "The route value for this message type is `vm`, and the value for transactional messages is `MsgCall`.\nThis is a transaction message that executes a function in realm or package that is deployed in the GNO chain.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "add_package",
+            "description": "The route value for this message type is `vm`, and the value for transactional messages is `MsgAddPackage`.\nThis is a transactional message that adds a package to the GNO chain.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "run",
+            "description": "The route value for this message type is `vm`, and the value for transactional messages is `MsgRun`.\nThis is a transactional message that executes an arbitrary Gno-coded TX message.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": []
+      },
+      {
+        "kind": "UNION",
+        "name": "MessageValue",
+        "description": null,
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "BankMsgSend",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "MsgCall",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "MsgAddPackage",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "MsgRun",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "UnexpectedMessage",
+            "ofType": null
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MsgAddPackage",
+        "description": "`MsgAddPackage` is a message with a message router of `vm` and a message type of `add_package`.\n`MsgAddPackage` is the package deployment tx message.",
+        "fields": [
+          {
+            "name": "creator",
+            "description": "the bech32 address of the package deployer.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "package",
+            "description": "the package being deployed.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MemPackage",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deposit",
+            "description": "the amount of funds to be deposited at deployment, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MsgAddPackageInput",
+        "description": "`MsgAddPackageInput` represents input parameters required when the message type is `add_package`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "creator",
+            "description": "the bech32 address of the package deployer.\nYou can filter by the package deployer's address.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "package",
+            "description": "the package being deployed.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MemPackageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "deposit",
+            "description": "the amount of funds to be deposited at deployment, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AmountInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MsgCall",
+        "description": "`MsgCall` is a message with a message router of `vm` and a message type of `exec`.\n`MsgCall` is the method invocation tx message.",
+        "fields": [
+          {
+            "name": "caller",
+            "description": "the bech32 address of the function caller.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "send",
+            "description": "the amount of funds to be deposited to the package, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pkg_path",
+            "description": "the gno package path.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "func",
+            "description": "the function name being invoked.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "args",
+            "description": "`args` are the arguments passed to the executed function.",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MsgCallInput",
+        "description": "`MsgCallInput` represents input parameters required when the message type is `exec`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "caller",
+            "description": "the bech32 address of the function caller.\nYou can filter by the function caller's address.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "send",
+            "description": "the amount of funds to be deposited to the package, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AmountInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "pkg_path",
+            "description": "the gno package path.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "func",
+            "description": "the function name being invoked.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "args",
+            "description": "`args` are the arguments passed to the executed function.\nThe arguments are checked in the order of the argument array and\nif they are empty strings, they are excluded from the filtering criteria.\nex) `[\"\", \"\", \"1\"]` <- Empty strings skip the condition.",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "MsgRun",
+        "description": "`MsgRun` is a message with a message router of `vm` and a message type of `run`.\n`MsgRun is the execute arbitrary Gno code tx message`.",
+        "fields": [
+          {
+            "name": "caller",
+            "description": "the bech32 address of the function caller.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "send",
+            "description": "the amount of funds to be deposited to the package, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "package",
+            "description": "the package being executed.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MemPackage",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "MsgRunInput",
+        "description": "`MsgRunInput` represents input parameters required when the message type is `run`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "caller",
+            "description": "the bech32 address of the function caller.\nYou can filter by the function caller's address.\nex) `g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5`",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "send",
+            "description": "the amount of funds to be deposited to the package, if any (\"<amount><denomination>\").\nex) `1000000ugnot`",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AmountInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "package",
+            "description": "the package being executed.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MemPackageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Query",
+        "description": "Root Query type to fetch data about Blocks and Transactions based on filters or retrieve the latest block height.",
+        "fields": [
+          {
+            "name": "transactions",
+            "description": "Retrieves a list of Transactions that match the given filter criteria. If the result is incomplete due to errors, both partial results and errors are returned.",
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TransactionFilter",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Transaction",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "blocks",
+            "description": "Fetches Blocks matching the specified filter criteria. Incomplete results due to errors return both the partial Blocks and the associated errors.",
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "BlockFilter",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Block",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "latestBlockHeight",
+            "description": "Returns the height of the most recently processed Block by the blockchain indexer, indicating the current length of the blockchain.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "String",
+        "description": "The `String`scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Subscription",
+        "description": "Subscriptions provide a way for clients to receive real-time updates about Transactions and Blocks based on specified filter criteria.\nSubscribers will only receive updates for events occurring after the subscription is established.",
+        "fields": [
+          {
+            "name": "transactions",
+            "description": "Subscribes to real-time updates of Transactions that match the provided filter criteria.\nThis subscription starts immediately and only includes Transactions added to the blockchain after the subscription is active.\n\nThis is useful for applications needing to track Transactions in real-time, such as wallets tracking incoming transactions\nor analytics platforms monitoring blockchain activity.\n\nReturns:\n- Transaction: Each received update is a Transaction object that matches the filter criteria.",
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TransactionFilter",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Transaction",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "blocks",
+            "description": "Subscribes to real-time updates of Blocks that match the provided filter criteria. Similar to the Transactions subscription,\nthis subscription is active immediately upon creation and only includes Blocks added after the subscription begins.\n\nThis subscription is ideal for services that need to be notified of new Blocks for processing or analysis, such as block explorers,\ndata aggregators, or security monitoring tools.\n\nReturns:\n- Block: Each update consists of a Block object that satisfies the filter criteria, allowing subscribers to process or analyze new Blocks in real time.",
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "BlockFilter",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Block",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Time",
+        "description": "Field representing a point on time. It is following the RFC3339Nano format (\"2006-01-02T15:04:05.999999999Z07:00\")",
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Transaction",
+        "description": "Defines a transaction within a block, detailing its execution specifics and content.",
+        "fields": [
+          {
+            "name": "index",
+            "description": "A sequential index representing the order of this Transaction within its Block. Unique within the context of its Block.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "hash",
+            "description": "Hash from Transaction content in base64 encoding.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "success",
+            "description": "The success can determine whether the transaction succeeded or failed.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "block_height",
+            "description": "The height of the Block in which this Transaction is included. Links the Transaction to its containing Block.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "gas_wanted",
+            "description": "The declared amount of computational effort the sender is willing to pay for executing this Transaction.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "gas_used",
+            "description": "The actual amount of computational effort consumed to execute this Transaction. It could be less or equal to `gas_wanted`.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content_raw",
+            "description": "The payload of the Transaction in a raw format, typically containing the instructions and any data necessary for execution.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "messages",
+            "description": "The payload of a message shows the contents of the messages in a transaction.\nA message consists of `router`, `type`, and `value` (whose form depends on the `router` and `type`).",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TransactionMessage",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "memo",
+            "description": "`memo` are string information stored within a transaction.\n`memo` can be utilized to find or distinguish transactions.\nFor example, when trading a specific exchange, you would utilize the memo field of the transaction.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "response",
+            "description": "`response` is the processing result of the transaction.\nIt has `log`, `info`, `error`, and `data`.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TransactionResponse",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionBankMessageInput",
+        "description": "`TransactionBankMessageInput` represents input parameters required when the message router is `bank`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "send",
+            "description": "send represents input parameters required when the message type is `send`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BankMsgSendInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionFilter",
+        "description": "Filters for querying Transactions within specified criteria related to their execution and placement within Blocks.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "from_block_height",
+            "description": "Minimum block height from which to start fetching Transactions, inclusive. Aids in scoping the search to recent Transactions.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_block_height",
+            "description": "Maximum block height up to which Transactions should be fetched, exclusive. Helps in limiting the search to older Transactions.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "from_index",
+            "description": "Minimum Transaction index from which to start fetching, inclusive. Facilitates ordering in Transaction queries.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_index",
+            "description": "Maximum Transaction index up to which to fetch, exclusive. Ensures a limit on the ordering range for Transaction queries.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "from_gas_wanted",
+            "description": "Minimum `gas_wanted` value to filter Transactions by, inclusive. Filters Transactions based on the minimum computational effort declared.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_gas_wanted",
+            "description": "Maximum `gas_wanted` value for filtering Transactions, exclusive. Limits Transactions based on the declared computational effort.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "from_gas_used",
+            "description": "Minimum `gas_used` value to filter Transactions by, inclusive. Selects Transactions based on the minimum computational effort actually used.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "to_gas_used",
+            "description": "Maximum `gas_used` value for filtering Transactions, exclusive. Refines selection based on the computational effort actually consumed.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "hash",
+            "description": "Hash from Transaction content in base64 encoding. If this filter is used, any other filter will be ignored.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "message",
+            "description": "Transaction's message to filter Transactions.\n`message` can be configured as a filter with a transaction message's `router` and `type` and `parameters(bank / vm)`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "TransactionMessageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "memo",
+            "description": "`memo` are string information stored within a transaction.\n`memo` can be utilized to find or distinguish transactions.\nFor example, when trading a specific exchange, you would utilize the memo field of the transaction.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "success",
+            "description": "`success` is whether the transaction was successful or not.\n`success` enables you to filter between successful and unsuccessful transactions.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TransactionMessage",
+        "description": null,
+        "fields": [
+          {
+            "name": "typeUrl",
+            "description": "The type of transaction message.\nThe value of `typeUrl` can be `send`, `exec`, `add_package`, `run`.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "route",
+            "description": "The route of transaction message.\nThe value of `route` can be `bank`, `vm`.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "value",
+            "description": "MessageValue is the content of the transaction.\n`value` can be of type `BankMsgSend`, `MsgCall`, `MsgAddPackage`, `MsgRun`, `UnexpectedMessage`.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "UNION",
+                "name": "MessageValue",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionMessageInput",
+        "description": "Transaction's message to filter Transactions.\n`TransactionMessageInput` can be configured as a filter with a transaction message's `router` and `type` and `parameters(bank / vm)`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "type_url",
+            "description": "The type of transaction message.\nThe value of `typeUrl` can be `send`, `exec`, `add_package`, `run`.",
+            "type": {
+              "kind": "ENUM",
+              "name": "MessageType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "route",
+            "description": "The route of transaction message.\nThe value of `route` can be `bank`, `vm`.",
+            "type": {
+              "kind": "ENUM",
+              "name": "MessageRoute",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "bank_param",
+            "description": "`TransactionBankMessageInput` represents input parameters required when the message router is `bank`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "TransactionBankMessageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "vm_param",
+            "description": "`TransactionVmMessageInput` represents input parameters required when the message router is `vm`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "TransactionVmMessageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TransactionResponse",
+        "description": "`TransactionResponse` is the processing result of the transaction.\nIt has `log`, `info`, `error`, and `data`.",
+        "fields": [
+          {
+            "name": "log",
+            "description": "The log value associated with the Transaction execution, if any.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "info",
+            "description": "The Info associated with the Transaction execution, if any.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "error",
+            "description": "The error value associated with the Transaction execution, if any.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "data",
+            "description": "The response data associated with the Transaction execution, if any.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionVmMessageInput",
+        "description": "`TransactionVmMessageInput` represents input parameters required when the message router is `vm`.",
+        "fields": [],
+        "inputFields": [
+          {
+            "name": "exec",
+            "description": "`MsgCallInput` represents input parameters required when the message type is `exec`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MsgCallInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "add_package",
+            "description": "`MsgAddPackageInput` represents input parameters required when the message type is `add_package`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MsgAddPackageInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "run",
+            "description": "`MsgRunInput` represents input parameters required when the message type is `run`.",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MsgRunInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TxFee",
+        "description": null,
+        "fields": [
+          {
+            "name": "gas_wanted",
+            "description": "gas limit",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "gas_fee",
+            "description": "gas fee details (<value><denomination>)",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UnexpectedMessage",
+        "description": "`UnexpectedMessage` is an Undefined Message, which is a message that decoding failed.",
+        "fields": [
+          {
+            "name": "raw",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Directive",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "locations",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "__DirectiveLocation",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "args",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isRepeatable",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "ENUM",
+        "name": "__DirectiveLocation",
+        "description": null,
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [
+          {
+            "name": "QUERY",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MUTATION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SUBSCRIPTION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FIELD",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FRAGMENT_DEFINITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FRAGMENT_SPREAD",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INLINE_FRAGMENT",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "VARIABLE_DEFINITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SCHEMA",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SCALAR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "OBJECT",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FIELD_DEFINITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ARGUMENT_DEFINITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INTERFACE",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM_VALUE",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_FIELD_DEFINITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__EnumValue",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isDeprecated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deprecationReason",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Field",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "args",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isDeprecated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deprecationReason",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__InputValue",
+        "description": null,
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "defaultValue",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Schema",
+        "description": null,
+        "fields": [
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "types",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Type",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "queryType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mutationType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "subscriptionType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "directives",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Directive",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Type",
+        "description": null,
+        "fields": [
+          {
+            "name": "kind",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "__TypeKind",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields",
+            "description": null,
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": "false"
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Field",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "interfaces",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "possibleTypes",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "enumValues",
+            "description": null,
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": "false"
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__EnumValue",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "inputFields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__InputValue",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ofType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "specifiedByURL",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [],
+        "possibleTypes": []
+      },
+      {
+        "kind": "ENUM",
+        "name": "__TypeKind",
+        "description": null,
+        "fields": [],
+        "inputFields": [],
+        "interfaces": [],
+        "enumValues": [
+          {
+            "name": "SCALAR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "OBJECT",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INTERFACE",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "LIST",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NON_NULL",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": []
+      }
+    ],
+    "directives": [
+      {
+        "name": "defer",
+        "description": "The @defer directive may be specified on a fragment spread to imply de-prioritization, that causes the fragment to be omitted in the initial response, and delivered as a subsequent response afterward. A query with @defer directive will cause the request to potentially return multiple responses, where non-deferred data is delivered in the initial response and data deferred delivered in a subsequent response. @include and @skip take precedence over @defer.",
+        "locations": [
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": "true"
+          },
+          {
+            "name": "label",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "deprecated",
+        "description": "The @deprecated built-in directive is used within the type system definition language to indicate deprecated portions of a GraphQL service's schema, such as deprecated fields on a type, arguments on a field, input fields on an input type, or values of an enum type.",
+        "locations": [
+          "FIELD_DEFINITION",
+          "ARGUMENT_DEFINITION",
+          "INPUT_FIELD_DEFINITION",
+          "ENUM_VALUE"
+        ],
+        "args": [
+          {
+            "name": "reason",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": "\"No longer supported\""
+          }
+        ]
+      },
+      {
+        "name": "include",
+        "description": "The @include directive may be provided for fields, fragment spreads, and inline fragments, and allows for conditional inclusion during execution as described by the if argument.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "skip",
+        "description": "The @skip directive may be provided for fields, fragment spreads, and inline fragments, and allows for conditional exclusion during execution as described by the if argument.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "specifiedBy",
+        "description": "The @specifiedBy built-in directive is used within the type system definition language to provide a scalar specification URL for specifying the behavior of custom scalar types.",
+        "locations": [
+          "SCALAR"
+        ],
+        "args": [
+          {
+            "name": "url",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      }
+    ]
+  }
+}
