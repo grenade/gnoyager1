@@ -7,19 +7,24 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+    "graphql": "15.x",
+    "graphql-ws": "5.16.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
+    "react-relay": "16.2.0",
     "react-scripts": "5.0.1",
+    "relay-runtime": "16.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "relay-compiler --validate && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npx browserslist@latest --update-db && react-scripts build",
-    "deploy": "gh-pages -d build --branch gh-pages"
+    "deploy": "gh-pages -d build --branch gh-pages",
+    "relay": "relay-compiler"
   },
   "homepage": "https://rob.tn/gnoyager1",
   "eslintConfig": {
@@ -41,6 +46,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "babel-plugin-relay": "16.2.0",
+    "gh-pages": "^6.1.1",
+    "relay-compiler": "16.2.0"
   }
 }
