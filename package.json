@@ -3,18 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tendermint/amino-js": "^0.6.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
     "graphql": "15.x",
-    "graphql-ws": "5.16.0",
+    "graphql-ws": "^5.16.0",
+    "protobufjs": "^7.3.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-relay": "16.2.0",
     "react-scripts": "5.0.1",
     "relay-runtime": "16.2.0",
+    "rxjs": "^7.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,10 +50,10 @@
     ]
   },
   "devDependencies": {
+    "@graphql-cli/codegen": "3.0.4",
     "babel-plugin-relay": "16.2.0",
     "gh-pages": "^6.1.1",
-    "relay-compiler": "16.2.0",
     "graphql-cli": "4.1.0",
-    "@graphql-cli/codegen": "3.0.4"
+    "relay-compiler": "16.2.0"
   }
 }
