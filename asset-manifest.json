@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/gnoyager1/static/css/main.ff02f4b5.css",
-    "main.js": "/gnoyager1/static/js/main.f31e93e9.js",
+    "main.js": "/gnoyager1/static/js/main.f253f4da.js",
     "static/js/453.492cb59d.chunk.js": "/gnoyager1/static/js/453.492cb59d.chunk.js",
     "index.html": "/gnoyager1/index.html",
     "main.ff02f4b5.css.map": "/gnoyager1/static/css/main.ff02f4b5.css.map",
-    "main.f31e93e9.js.map": "/gnoyager1/static/js/main.f31e93e9.js.map",
+    "main.f253f4da.js.map": "/gnoyager1/static/js/main.f253f4da.js.map",
     "453.492cb59d.chunk.js.map": "/gnoyager1/static/js/453.492cb59d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff02f4b5.css",
-    "static/js/main.f31e93e9.js"
+    "static/js/main.f253f4da.js"
   ]
 }
