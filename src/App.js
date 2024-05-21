@@ -180,7 +180,7 @@ const App = () => {
       }
       <ul>
         <li>
-          number of transactions: {
+          number of extrinsics (block {transactions.slice(-1)[0].block} to {transactions[0].block}): {
             (!!transactions)
               ? (transactions.length)
               : (
@@ -189,7 +189,7 @@ const App = () => {
           }
         </li>
         <li>
-          number of different message types: {
+          number of different extrinsic types: {
             (!!transactions)
               ? (
                   <ul>
