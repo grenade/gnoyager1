@@ -166,6 +166,7 @@ const App = () => {
 
   return (
     <Container>
+      <h3>runtime statistics</h3>
       {
         (!!blockchain)
           ? (
@@ -242,6 +243,7 @@ const App = () => {
           */
         }
       </ul>
+      <h3>raw extrinsics data</h3>
       {
         (!!transactions)
           ? (
