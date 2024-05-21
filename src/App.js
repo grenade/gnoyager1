@@ -180,7 +180,15 @@ const App = () => {
       }
       <ul>
         <li>
-          number of extrinsics (block {transactions.slice(-1)[0].block} to {transactions[0].block}): {
+          number of extrinsics (block {
+            (!!transactions)
+              ? (transactions.slice(-1)[0].block)
+              : (<Spinner animation="border" size="sm" />)
+          } to {
+            (!!transactions)
+              ? (transactions[0].block)
+              : (<Spinner animation="border" size="sm" />)
+          }): {
             (!!transactions)
               ? (transactions.length)
               : (
