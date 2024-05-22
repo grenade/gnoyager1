@@ -273,25 +273,84 @@ const App = () => {
           </ul>
         </Col>
         <Col style={{padding: '1em'}}>
-          <h3>raw extrinsics data</h3>
-          {
-            (!!transactions)
-              ? (
-                  <pre>
-                    {JSON.stringify(transactions, null, 2)}
-                  </pre>
-                )
-              : null
-          }
-          {
-            (!!blockchain)
-              ? (
-                  <pre>
-                    {JSON.stringify(blockchain, null, 2)}
-                  </pre>
-                )
-              : null
-          }
+          <h3>extrinsics</h3>
+          <ul>
+            {
+              (!!transactions)
+                ? [...Array(range.size).keys()].map(i => i + Math.max(1, (blockchain.last.block.number - (range.size - 1)))).filter((x) => ((x > 0) && (x <= blockchain.last.block.number))).reverse().map((b) => (
+                    <li key={b}>
+                      block {b}
+                      {
+                        (transactions.some((t) => t.block === b))
+                          ? (
+                              <ul>
+                                {
+                                  transactions.filter((t) => t.block === b).map((tx) => (
+                                    <li>
+                                      {tx.extrinsic.name}<br />
+                                      {
+                                        (tx.extrinsic.name === 'MsgAddPackage')
+                                          ? (
+                                              <ul>
+                                                <li>
+                                                  hash: <pre style={{display: 'inline'}}>{tx.hash}</pre>
+                                                </li>
+                                                <li>
+                                                  creator: {tx.extrinsic.value.creator}
+                                                </li>
+                                                <li>
+                                                  name: {tx.extrinsic.value.package.name}
+                                                </li>
+                                                <li>
+                                                  path: {tx.extrinsic.value.package.path}
+                                                </li>
+                                              </ul>
+                                            )
+                                          : (tx.extrinsic.name === 'BankMsgSend')
+                                            ? (
+                                                <ul>
+                                                  <li>
+                                                    hash: <pre style={{display: 'inline'}}>{tx.hash}</pre>
+                                                  </li>
+                                                  <li>
+                                                    from: <pre style={{display: 'inline'}}>{tx.extrinsic.value.from}</pre>
+                                                  </li>
+                                                  <li>
+                                                    to: <pre style={{display: 'inline'}}>{tx.extrinsic.value.to}</pre>
+                                                  </li>
+                                                  <li>
+                                                    amount: {tx.extrinsic.value.amount}
+                                                  </li>
+                                                </ul>
+                                              )
+                                            : (['MsgCall', 'MsgRun'].includes(tx.extrinsic.name))
+                                              ? (
+                                                  <ul>
+                                                    <li>
+                                                      hash: <pre style={{display: 'inline'}}>{tx.hash}</pre>
+                                                    </li>
+                                                    <li>
+                                                      caller: {tx.extrinsic.value.caller}
+                                                    </li>
+                                                    <li>
+                                                      path: {tx.extrinsic.value.package.path}
+                                                    </li>
+                                                  </ul>
+                                                )
+                                              : null
+                                      }
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            )
+                          : null
+                      }
+                    </li>
+                  ))
+                : null
+            }
+          </ul>
         </Col>
       </Row>
     </Container>
