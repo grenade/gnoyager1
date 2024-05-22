@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Alert from 'react-bootstrap/Alert';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 
 const iso_dt = (offset = 0) => {
@@ -166,110 +168,132 @@ const App = () => {
 
   return (
     <Container>
-      <h3>runtime statistics</h3>
-      {
-        (!!blockchain)
-          ? (
-              <Alert variant="warning">
-                statistics shown relate to extrinsics executed between block {Math.max(1, (blockchain.last.block.number - (range.size - 1)))} and {blockchain.last.block.number} inclusive.
-              </Alert>
-            )
-          : (
-              <Spinner animation="border" size="sm" />
-            )
-      }
-      <ul>
-        <li>
-          number of extrinsics (block {
-            (!!transactions)
-              ? (transactions.slice(-1)[0].block)
-              : (<Spinner animation="border" size="sm" />)
-          } to {
-            (!!transactions)
-              ? (transactions[0].block)
-              : (<Spinner animation="border" size="sm" />)
-          }): {
-            (!!transactions)
-              ? (transactions.length)
-              : (
-                  <Spinner animation="border" size="sm" />
-                )
-          }
-        </li>
-        <li>
-          number of different extrinsic types: {
-            (!!transactions)
-              ? (
-                  <ul>
-                    {
-                      [...new Set(transactions.map((tx) => tx.extrinsic.name))].map((extrinsic) => (
-                        <li key={extrinsic}>
-                          {extrinsic}: {transactions.filter((tx) => (tx.extrinsic.name === extrinsic)).length}
-                        </li>
-                      ))
-                    }
-                  </ul>
-                )
-              : (
-                  <Spinner animation="border" size="sm" />
-                )
-          }
-        </li>
-        <li>
-          most active accounts: {
-            (!!transactions)
-              ? (
-                  <ul>
-                    {
-                      [...new Set(transactions.map((tx) => tx.extrinsic.name))].map((extrinsic) => (
-                        <li key={extrinsic}>
-                          {extrinsic}:
-                          <ul>
-                            {
-                              [...new Set(transactions.filter((tx) => (tx.extrinsic.name === extrinsic)).map(({sender}) => sender))].map((sender) => (
-                                <li key={sender}>
-                                  <pre style={{display: 'inline'}}>{sender}</pre>: {
-                                    transactions.filter((tx) => (tx.extrinsic.name === extrinsic && tx.sender === sender)).length
-                                  }
-                                </li>
-                              ))
-                            }
-                          </ul>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                )
-              : (
-                  <Spinner animation="border" size="sm" />
-                )
-          }
-        </li>
+      <Row>
         {
-          /*
-        <li>most active realms / packages deployed / called</li>
-          */
+          (!!blockchain)
+            ? (
+                <Alert variant="warning" style={{margin: '1em'}}>
+                  statistics shown relate to extrinsic executions occuring between block {Math.max(1, (blockchain.last.block.number - (range.size - 1)))} and {blockchain.last.block.number} inclusive.
+                </Alert>
+              )
+            : (
+                <Spinner animation="border" size="sm" />
+              )
         }
-      </ul>
-      <h3>raw extrinsics data</h3>
-      {
-        (!!transactions)
-          ? (
-              <pre>
-                {JSON.stringify(transactions, null, 2)}
-              </pre>
-            )
-          : null
-      }
-      {
-        (!!blockchain)
-          ? (
-              <pre>
-                {JSON.stringify(blockchain, null, 2)}
-              </pre>
-            )
-          : null
-      }
+      </Row>
+      <Row>
+        <Col style={{padding: '1em'}}>
+          <h3>
+            runtime statistics (block {
+                (!!transactions)
+                  ? (transactions.slice(-1)[0].block)
+                  : (<Spinner animation="border" size="sm" />)
+              } to {
+                (!!transactions)
+                  ? (transactions[0].block)
+                  : (<Spinner animation="border" size="sm" />)
+              })
+          </h3>
+          <ul>
+            <li>
+              number of extrinsic executions: {
+                (!!transactions)
+                  ? (transactions.length)
+                  : (
+                      <Spinner animation="border" size="sm" />
+                    )
+              }
+            </li>
+            <li>
+              number of extrinsic types: {
+                (!!transactions)
+                  ? ([...new Set(transactions.map(({extrinsic}) => extrinsic.name))].length)
+                  : (
+                      <Spinner animation="border" size="sm" />
+                    )
+              }{
+                (!!transactions)
+                  ? (
+                      <ul>
+                        {
+                          [...new Set(transactions.map((tx) => tx.extrinsic.name))].map((extrinsic) => (
+                            <li key={extrinsic}>
+                              {extrinsic}: {transactions.filter((tx) => (tx.extrinsic.name === extrinsic)).length}
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    )
+                  : (
+                      <Spinner animation="border" size="sm" />
+                    )
+              }
+            </li>
+            <li>
+              active accounts: {
+                (!!transactions)
+                  ? ([...new Set(transactions.map(({sender}) => sender))].length)
+                  : (
+                      <Spinner animation="border" size="sm" />
+                    )
+              }{
+                (!!transactions)
+                  ? (
+                      <ul>
+                        {
+                          [...new Set(transactions.map((tx) => tx.extrinsic.name))].map((extrinsic) => (
+                            <li key={extrinsic}>
+                              {extrinsic}:
+                              <ul>
+                                {
+                                  [...new Set(transactions.filter((tx) => (tx.extrinsic.name === extrinsic)).map(({sender}) => sender))].map((sender) => (
+                                    <li key={sender}>
+                                      <pre style={{display: 'inline'}}>{sender}</pre>: {
+                                        transactions.filter((tx) => (tx.extrinsic.name === extrinsic && tx.sender === sender)).length
+                                      }
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    )
+                  : (
+                      <Spinner animation="border" size="sm" />
+                    )
+              }
+            </li>
+            {
+              /*
+            <li>most active realms / packages deployed / called</li>
+              */
+            }
+          </ul>
+        </Col>
+        <Col style={{padding: '1em'}}>
+          <h3>raw extrinsics data</h3>
+          {
+            (!!transactions)
+              ? (
+                  <pre>
+                    {JSON.stringify(transactions, null, 2)}
+                  </pre>
+                )
+              : null
+          }
+          {
+            (!!blockchain)
+              ? (
+                  <pre>
+                    {JSON.stringify(blockchain, null, 2)}
+                  </pre>
+                )
+              : null
+          }
+        </Col>
+      </Row>
     </Container>
   );
 }
